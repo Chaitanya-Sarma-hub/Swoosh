@@ -18,6 +18,16 @@ class LeagueActivity : BaseActivity() {
         setContentView(R.layout.activity_league)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(EXTRA_PLAYER, player)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        player = savedInstanceState.getParcelable(EXTRA_PLAYER)!!
+    }
+
     fun onMensClicked(view: View) {
         findViewById<ToggleButton>(R.id.womensLeagueButton).isChecked = false
         findViewById<ToggleButton>(R.id.coedLeagueButton).isChecked = false
